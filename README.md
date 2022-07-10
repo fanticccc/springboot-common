@@ -1,5 +1,6 @@
 # springboot-common
 【Project author】 SongJunBao
+【VERSION】[1.0.0]
 【Project description】 SpringBoot Some Technical functions Test
 【Using technology】
     SpringBoot 
