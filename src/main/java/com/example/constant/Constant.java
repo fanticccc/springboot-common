@@ -1,7 +1,7 @@
 package com.example.constant;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 系统参数
  * @Date 2022/4/8 17:25
  * @Version 1.0

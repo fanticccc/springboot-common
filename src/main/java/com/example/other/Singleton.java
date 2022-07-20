@@ -1,7 +1,7 @@
 package com.example.other;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 单例模式
  * @Date 2022/2/16 17:40
  * @Version 1.0

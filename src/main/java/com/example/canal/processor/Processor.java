@@ -3,7 +3,7 @@ package com.example.canal.processor;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description:
  * @Date 2022/4/19 18:20
  * @Version 1.0

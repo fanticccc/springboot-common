@@ -3,7 +3,7 @@ package com.example.constant;
 import lombok.Data;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 邮件
  * @Date 2022/5/5 15:05
  * @Version 1.0

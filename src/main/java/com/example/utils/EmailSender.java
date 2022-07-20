@@ -6,13 +6,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
-/**
- * @Author YSTen_SongJunBao
- * @Description: email 工具类
- * @Date 2022/5/5 14:01
- * @Version 1.0
- * com.example.utils
- */
 @Slf4j
 @Service
 public class EmailSender {

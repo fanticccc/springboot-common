@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 异常用户
  * @Date 2022/2/24 15:50
  * @Version 1.0

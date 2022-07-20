@@ -7,6 +7,7 @@ import com.example.thread.SyncTaskThread;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.Environment;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -26,6 +30,9 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @Slf4j
 //@SpringBootApplication(exclude = RocketMqConfig.class)
@@ -38,8 +45,23 @@ import org.springframework.web.client.RestTemplate;
 public class SpringMybatisApplication extends SpringBootServletInitializer implements ApplicationRunner {
     @Autowired
     private GradeService gradeService ;
-    public static void main(String[] args) {
-        SpringApplication.run(SpringMybatisApplication.class, args);
+    @Getter
+    private static ConfigurableApplicationContext ctx;
+
+    public static void main(String[] args) throws UnknownHostException {
+//        SpringApplication.run(SpringMybatisApplication.class, args);
+        ctx = SpringApplication.run(SpringMybatisApplication.class,args);
+        Environment environment = ctx.getEnvironment();
+        log.info("\n----------------------------------------------------------\n\t" +
+                        "应用访问连接:\n\t" +
+                        "swagger地址: \t\thttp://{}:{}/swagger-ui.html\n\t" +
+                        "doc地址: \t\thttp://{}:{}/doc.html\n\t" +
+                        "----------------------------------------------------------",
+                InetAddress.getLocalHost().getHostAddress(),
+                environment.getProperty("server.port"),
+                InetAddress.getLocalHost().getHostAddress(),
+                environment.getProperty("server.port")
+        );
     }
 
 

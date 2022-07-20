@@ -14,7 +14,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 实现日志打印
  * @Date 2022/5/19 14:33
  * @Version 1.0

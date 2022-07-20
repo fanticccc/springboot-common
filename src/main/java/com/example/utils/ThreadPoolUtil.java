@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description:
  * @Date 2022/6/17 17:27
  * @Version 1.0
@@ -50,9 +50,7 @@ public class ThreadPoolUtil {
             QUEUE,
             new BackendCallerRunsPolicy()
     );
-    /**
-     * Starts all core threads,causing them to idly wait for work
-     */
+
     static {
         pool.prestartAllCoreThreads();
     }

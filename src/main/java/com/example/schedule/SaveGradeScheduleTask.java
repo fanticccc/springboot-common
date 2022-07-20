@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import java.time.LocalDateTime;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 启动类
  * @Date 2022/2/24 17:58
  * @Version 1.0

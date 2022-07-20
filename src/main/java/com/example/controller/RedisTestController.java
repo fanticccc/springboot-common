@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 测试redis
  * @Date 2022/5/17 17:50
  * @Version 1.0
@@ -27,7 +27,7 @@ public class RedisTestController {
 
     @Autowired
     private RedisUtils redisUtils;
-    
+
     @Autowired
     private  RedisTemplate redisTemplate ;
 

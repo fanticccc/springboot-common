@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.ArrayBlockingQueue;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 延时队列 存放异常用户
  * @Date 2022/2/24 14:53
  * @Version 1.0

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 测试发送钉钉消息
  * @Date 2022/4/8 17:36
  * @Version 1.0

@@ -15,7 +15,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description:
  * @Date 2022/2/24 17:08
  * @Version 1.0

@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author song
  * @Description: 读取配置文件
  * @Date 2022/5/17 14:25
  * @Version 1.0

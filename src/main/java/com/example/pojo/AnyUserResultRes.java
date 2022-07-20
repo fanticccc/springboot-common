@@ -4,7 +4,6 @@ import com.example.constant.Result;
 import lombok.*;
 
 /**
- * @Author YSTen_SongJunBao
  * @Description: 分页参数
  * @Date 2022/1/26 15:04
  * @Version 1.0

@@ -6,8 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author YSTen_SongJunBao
- * @Description: 缓存配置
+ * @Description: 缓存配置信息
  * @Date 2022/1/26 11:02
  * @Version 1.0
  * com.example.config
