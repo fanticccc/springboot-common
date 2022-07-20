@@ -19,7 +19,6 @@ import java.util.*;
  * @Description: 处理、发送钉钉
  * @Date 2022/4/1 10:46
  * @Version 1.0
- * com.ysten.cos.utils
  */
 @Service
 @Slf4j

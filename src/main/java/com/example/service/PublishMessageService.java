@@ -5,7 +5,6 @@ package com.example.service;
  * @Description:
  * @Date 2022/4/1 10:46
  * @Version 1.0
- * com.ysten.cos.utils
  */
 
 public interface PublishMessageService {
