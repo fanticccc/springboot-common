@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import javax.mail.Session;
 
 /**
- * @Author YSTen_SongJunBao
+ * @Author SongJunBao
  * @Description:
  * @Date 2022/5/5 11:38
  * @Version 1.0
