@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @EnableScheduling //开启定时任务
 @EnableAsync //开启多线程
 public class TheadScheduleTask {
-    @Async("UserThreadPoolExecutor")
+    @Async("adminThreadPool")
     @Scheduled(fixedDelay = 5000)
     public void first(){
         System.out.println(" Scheduled start:"+ LocalDateTime.now().toLocalTime()+"\r\n线程"+Thread.currentThread().getName());

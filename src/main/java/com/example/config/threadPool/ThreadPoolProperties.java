@@ -1,4 +1,4 @@
-package com.example.config.thread;
+package com.example.config.threadPool;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -23,9 +23,11 @@ spring:
   mail:
     username: 2548533500@qq.com
     # 邮箱生成的校验码
-    password: zfaxjkhjqdemdjab
+    password: xzhpkkoefyqkdjbi
     host: smtp.qq.com
-    protocol: smtp
+    port: 465
+    default-encoding: utf-8
+    protocol: smtps
     properties:
       mail:
         smtp:

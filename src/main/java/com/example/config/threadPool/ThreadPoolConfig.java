@@ -1,15 +1,16 @@
-package com.example.config.thread;
+package com.example.config.threadPool;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.AsyncTaskExecutor;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -33,9 +34,9 @@ public class ThreadPoolConfig {
         this.threadPoolProperties = threadPoolProperties ;
     }
 
-    @Bean(name = "UserThreadPoolExecutor")
-    public AsyncTaskExecutor getThreadPoolAsync(){
-        return initThreadPool("UserThreadPoolExecutor");
+    @Bean(name = "adminThreadPool")
+    public ThreadPoolExecutor getThreadPoolExecutor(){
+        return initThreadPool2("threadPoolSong--");
     }
 
     private ThreadPoolTaskExecutor initThreadPool(String poolName){
@@ -51,12 +52,14 @@ public class ThreadPoolConfig {
         return executor ;
     }
     private ThreadPoolExecutor initThreadPool2(String poolName){
+        ThreadFactory threadFactory = new CustomizableThreadFactory(poolName);
         ThreadPoolExecutor executor = new ThreadPoolExecutor(
                 threadPoolProperties.getCorePoolSize(),
                 threadPoolProperties.getMaxPoolSize(),
                 threadPoolProperties.getKeepAliveSeconds(),
                 TimeUnit.MILLISECONDS,
                 new ArrayBlockingQueue<Runnable>(threadPoolProperties.getQueueCapactiy()),
+                threadFactory,
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
         return executor;

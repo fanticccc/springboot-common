@@ -3,7 +3,7 @@ package com.example.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class EmailSender {
 
     @Autowired
-    private JavaMailSenderImpl javaMailSender ;
+    private JavaMailSender javaMailSender ;
     /**
      * 发送电子邮件
      * @param subject 标题

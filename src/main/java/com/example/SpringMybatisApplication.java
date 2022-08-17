@@ -15,6 +15,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
@@ -68,10 +69,6 @@ public class SpringMybatisApplication extends SpringBootServletInitializer imple
     @Bean
     public RestTemplate restTemplate(){
         return new RestTemplate();
-    }
-    @Bean
-    public JavaMailSenderImpl javaMailSender(){
-        return new JavaMailSenderImpl();
     }
 
     @Override
