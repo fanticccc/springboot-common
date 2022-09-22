@@ -16,20 +16,23 @@ import java.util.concurrent.ArrayBlockingQueue;
 @Slf4j
 public class SysQueueUtils {
 
-    private static final int QUEUE_SIZE = 100 ;
+    private static final int QUEUE_SIZE = 100;
 
     private final static ArrayBlockingQueue<Grade> queue = new ArrayBlockingQueue<>(QUEUE_SIZE);
 
-  /**
+    /**
      * 保存信息至队列
+     *
      * @param user
      * @return
      */
-    public static Boolean setObj(Grade user){
-        return  queue.offer(user);
+    public static Boolean setObj(Grade user) {
+        return queue.offer(user);
     }
+
     /**
      * 获取队列信息
+     *
      * @return
      * @throws InterruptedException
      */

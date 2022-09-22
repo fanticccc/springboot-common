@@ -22,31 +22,31 @@ import org.springframework.stereotype.Service;
  * com.example.thread //implements ApplicationContextAware
  */
 @Slf4j
-public class SyncTaskThread extends Thread  {
+public class SyncTaskThread extends Thread {
 
-    private GradeService gradeService ;
+    private GradeService gradeService;
 
- public SyncTaskThread(GradeService gradeService){
-     this.gradeService = gradeService ;
- }
+    public SyncTaskThread(GradeService gradeService) {
+        this.gradeService = gradeService;
+    }
 
     @Override
     @SneakyThrows
     public void run() {
         log.info("Method:SyncTaskThread,run ============= starting ===========");
-        while (true){
+        while (true) {
             try {
                 Grade obj = SysQueueUtils.getObj();
                 doTask(obj);
-            }catch (Exception ex){
-                log.error("【SyncTaskThread----】取user保存至grade表出现异常:{}",ex.getMessage());
+            } catch (Exception ex) {
+                log.error("【SyncTaskThread----】取user保存至grade表出现异常:{}", ex.getMessage());
             }
         }
     }
 
-    private void doTask(Grade grade){
+    private void doTask(Grade grade) {
         //将异常用户存入grade表
-       // GradeService gradeService = (GradeService) getBean("gradeService");
+        // GradeService gradeService = (GradeService) getBean("gradeService");
         gradeService.addGrade(grade);
     }
 

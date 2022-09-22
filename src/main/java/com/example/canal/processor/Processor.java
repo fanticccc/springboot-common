@@ -13,12 +13,14 @@ import com.alibaba.otter.canal.protocol.CanalEntry;
 public interface Processor {
     /**
      * 表名
+     *
      * @return
      */
     String tableName();
 
     /**
      * 处理记录数
+     *
      * @param entry
      * @return
      */

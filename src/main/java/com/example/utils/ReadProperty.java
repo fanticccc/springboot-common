@@ -21,32 +21,35 @@ public class ReadProperty {
 
     private static Properties properties = new Properties();
 
-    public static ReadProperty getInstance(){
+    public static ReadProperty getInstance() {
         return dbConfig;
     }
-    private void loadProperties(){
+
+    private void loadProperties(String resourceName) {
         InputStreamReader in = null;
-        try{
-            in = new InputStreamReader(ReadProperty.class.getResourceAsStream("/application.properties"),"UTF-8");
+        try {
+            in = new InputStreamReader(ReadProperty.class.getResourceAsStream("/" + resourceName + ".properties"), "UTF-8");
             properties.load(in);
-        }catch (Exception ex){
-            log.error("load application  configuration exception", ex);
-        }finally {
+        } catch (Exception ex) {
+            log.error("load application configuration exception :{}", ex);
+        } finally {
             try {
                 in.close();
-            }catch (Exception e){
+            } catch (Exception e) {
                 log.error("IO exception", e);
             }
         }
     }
-    public static String getProperty(String propertiesName){
 
-        if (properties.isEmpty()){
-            ReadProperty.getInstance().loadProperties();
+    public static String getProperty(String resourceName, String propertiesName) {
+
+        if (properties.isEmpty()) {
+            ReadProperty.getInstance().loadProperties(resourceName);
         }
         return properties.getProperty(propertiesName);
     }
-    public static String get(String propertiesName){
-        return getProperty(propertiesName);
+
+    public static String get(String resourceName, String propertiesName) {
+        return getProperty(resourceName, propertiesName);
     }
 }

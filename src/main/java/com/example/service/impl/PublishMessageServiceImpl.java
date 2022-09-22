@@ -1,4 +1,5 @@
 package com.example.service.impl;
+
 import com.example.constant.Constant;
 import com.example.service.PublishMessageService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +26,10 @@ import java.util.*;
 public class PublishMessageServiceImpl implements PublishMessageService {
 
     @Value("${dingding-parmeters.dingding_mobiles}")
-    private  String DINGDING_MOBILES_NUMBER ;
+    private String DINGDING_MOBILES_NUMBER;
 
     @Value("${dingding-parmeters.dingding_api_url}")
-    private  String DINGDING_API_URL ;
+    private String DINGDING_API_URL;
 
     @Resource
     private RestTemplate restTemplate;
@@ -52,9 +53,9 @@ public class PublishMessageServiceImpl implements PublishMessageService {
             if (StringUtils.isNotBlank(atMobile)) {
                 atMobiles.add(atMobile);
             }
-            if(!CollectionUtils.isEmpty(atMobiles)){
+            if (!CollectionUtils.isEmpty(atMobiles)) {
                 atObj.put("atMobiles", atMobiles);
-            }else {
+            } else {
                 atObj.put("isAtAll", true);
             }
             paramObj.put("at", atObj);
@@ -64,11 +65,12 @@ public class PublishMessageServiceImpl implements PublishMessageService {
             HttpEntity httpEntity = new HttpEntity<>(paramObj, headers);
             String dingdingUrl = String.format("%s&timestamp=%s", DINGDING_API_URL, timestamp);
             String result = restTemplate.postForObject(dingdingUrl, httpEntity, String.class);
-            log.debug("Method:sendToDingDingInfo,result:{}",result);
+            log.debug("Method:sendToDingDingInfo,result:{}", result);
         } catch (Exception e) {
-            log.error("Method:sendToDingDingInfo,e:{}",e);
+            log.error("Method:sendToDingDingInfo,e:{}", e);
         }
     }
+
     private List<String> splitToString(String source, String separator) {
         if (StringUtils.isEmpty(source)) {
             return Collections.emptyList();

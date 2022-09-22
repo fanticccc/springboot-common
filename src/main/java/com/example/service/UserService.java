@@ -27,6 +27,6 @@ public interface UserService {
 
     User selectUserByName(String name);
 
-    List<User> selectAny(String userName,String name,Integer age,String sex,Integer isMry);
+    List<User> selectAny(String userName, String name, Integer age, String sex, Integer isMry);
 
 }

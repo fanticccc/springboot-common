@@ -22,29 +22,29 @@ import java.time.LocalDateTime;
 @Configuration
 public class SaveGradeScheduleTask implements ApplicationContextAware {
 
-   /* @Autowired
-    private SyncTaskThread syncTaskThread;*/
-    private static ApplicationContext context ;
+    /* @Autowired
+     private SyncTaskThread syncTaskThread;*/
+    private static ApplicationContext context;
 
     @Scheduled(cron = "${system-parameters.scheduling.grade}")
-    public void task(){
+    public void task() {
         //SyncTaskThread syncTaskThread = (SyncTaskThread) getBean("syncTaskThread");
         // SyncTaskThread syncTaskThread1 = new SyncTaskThread();
-        log.info("Spring Scheduling SaveGradeScheduleTask start--------:{}", LocalDateTime.now().toLocalTime() );
+        log.info("Spring Scheduling SaveGradeScheduleTask start--------:{}", LocalDateTime.now().toLocalTime());
         //syncTaskThread.start();
         //syncTaskThread1.start();
     }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        context = applicationContext ;
+        context = applicationContext;
     }
 
-    public static ApplicationContext getApplicationContent(){
-        return context ;
+    public static ApplicationContext getApplicationContent() {
+        return context;
     }
 
-    public static Object getBean(String name){
+    public static Object getBean(String name) {
         return getApplicationContent().getBean(name);
     }
 }

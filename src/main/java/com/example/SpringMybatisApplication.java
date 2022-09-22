@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.config.rocketmq.RocketMqConfig;
 import com.example.config.rocketmq.RocketMqProperties;
+import com.example.consumer.starter.ExplainService;
 import com.example.service.GradeService;
 import com.example.thread.SyncTaskThread;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -13,6 +14,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
@@ -43,15 +45,17 @@ import java.net.UnknownHostException;
 @EnableScheduling // 开启定时任务
 @EnableAsync
 
-public class SpringMybatisApplication extends SpringBootServletInitializer implements ApplicationRunner {
+public class SpringMybatisApplication extends SpringBootServletInitializer implements ApplicationRunner, CommandLineRunner {
     @Autowired
-    private GradeService gradeService ;
+    private GradeService gradeService;
     @Getter
     private static ConfigurableApplicationContext ctx;
+    @Autowired
+    private ExplainService explainService;
 
     public static void main(String[] args) throws UnknownHostException {
 //        SpringApplication.run(SpringMybatisApplication.class, args);
-        ctx = SpringApplication.run(SpringMybatisApplication.class,args);
+        ctx = SpringApplication.run(SpringMybatisApplication.class, args);
         Environment environment = ctx.getEnvironment();
         log.info("\n----------------------------------------------------------\n\t" +
                         "应用访问连接:\n\t" +
@@ -72,12 +76,13 @@ public class SpringMybatisApplication extends SpringBootServletInitializer imple
     }
 
     @Override
-    public void run(ApplicationArguments args)  {
+    public void run(ApplicationArguments args) {
         log.info(" springboot project start  。。。 ");
         //启动服务的时候 将线程开启 处理异常用户信息
         SyncTaskThread syncTaskThread = new SyncTaskThread(gradeService);
         syncTaskThread.start();
     }
+
     @Bean
     public RedisTemplate<Object,Object> redisTemplate(RedisConnectionFactory redisConnectionFactory){
         RedisTemplate<Object,Object> redisTemplate = new RedisTemplate<>();
@@ -95,5 +100,11 @@ public class SpringMybatisApplication extends SpringBootServletInitializer imple
         redisTemplate.setHashValueSerializer(new StringRedisSerializer());
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        log.info("CommandLineRunner start . . .");
+        explainService.explain("李四","springboot starter。。。");
     }
 }

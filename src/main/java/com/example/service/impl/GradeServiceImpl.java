@@ -19,13 +19,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class GradeServiceImpl implements GradeService {
 
-@Autowired
-private GradeMapper gradeMapper ;
-
+    @Autowired
+    private GradeMapper gradeMapper;
 
 
     @Override
     public int addGrade(Grade grade) {
-        return  gradeMapper.addGrade(grade);
+        return gradeMapper.addGrade(grade);
     }
 }

@@ -6,7 +6,7 @@
 
     <insert id="addGrade" parameterType="com.example.pojo.Grade">
         insert into test_user_grade(id,name,grade)
-         values(#{id},#{name},#{grade})
+        values(#{id},#{name},#{grade})
     </insert>
 
 </mapper>

@@ -26,6 +26,7 @@ public class RedisUtils {
 
     /*@Autowired
     JedisCluster jedisCluster ;*/
+
     /**
      * 批量删除对应的value
      *
@@ -36,6 +37,7 @@ public class RedisUtils {
             remove(key);
         }
     }
+
     /**
      * 批量删除key
      *
@@ -46,6 +48,7 @@ public class RedisUtils {
         if (keys.size() > 0)
             redisTemplate.delete(keys);
     }
+
     /**
      * 删除对应的value
      *
@@ -56,6 +59,7 @@ public class RedisUtils {
             redisTemplate.delete(key);
         }
     }
+
     /**
      * 判断缓存中是否有对应的value
      *
@@ -65,13 +69,15 @@ public class RedisUtils {
     public boolean exists(final String key) {
         return redisTemplate.hasKey(key);
     }
+
     /**
      * 读取缓存
      *
      * @param key
      * @return
      */
-    public Object get(final String key) { Object result = null;
+    public Object get(final String key) {
+        Object result = null;
         ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
         result = operations.get(key);
         return result;
@@ -88,7 +94,7 @@ public class RedisUtils {
         boolean result = false;
         try {
             ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
-            operations.set(key, value,2,TimeUnit.DAYS);
+            operations.set(key, value, 2, TimeUnit.DAYS);
             result = true;
         } catch (Exception e) {
             e.printStackTrace();

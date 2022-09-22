@@ -12,12 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Demo3 {
     public static void main(String[] args) {
-        HashMap<String,String> map = new HashMap<>();
+        HashMap<String, String> map = new HashMap<>();
         Map<String, String> map1 = Collections.synchronizedMap(map);
         ConcurrentHashMap<Object, Object> objectObjectConcurrentHashMap = new ConcurrentHashMap<>();
         Set<String> set = new HashSet();
         Iterator<String> iterator = set.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String next = iterator.next();
             System.out.println(next);
         }

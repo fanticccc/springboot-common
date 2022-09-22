@@ -15,14 +15,14 @@ import org.springframework.stereotype.Component;
 public class DingTalkUtil {
 
     @Autowired
-    private  PublishMessageService publishMessageService ;
+    private PublishMessageService publishMessageService;
 
-    public  void send (String content, String atMobile){
-        publishMessageService.sendToDingDingInfo(content,atMobile);
+    public void send(String content, String atMobile) {
+        publishMessageService.sendToDingDingInfo(content, atMobile);
     }
 
-    public static String  taskLa(String str){
-        return str ;
+    public static String taskLa(String str) {
+        return str;
         //publishMessageService.sendToDingDingInfo(content,atMobile);
     }
 

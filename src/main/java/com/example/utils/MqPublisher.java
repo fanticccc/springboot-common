@@ -1,3 +1,4 @@
+/*
 package com.example.utils;
 
 import com.example.config.rocketmq.RocketMqConfig;
@@ -12,12 +13,17 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
+*/
 /**
  * @Description:
  * @Date 2022/4/6 10:45
  * @Version 1.0
  * com.exc.song.utils
- */
+ * <p>
+ * 发送消息
+ * @param message
+ *//*
+
 @Slf4j
 @Service
 public class MqPublisher {
@@ -34,10 +40,12 @@ public class MqPublisher {
         this.rocketMqConfig = rocketMqConfig;
     }
 
-    /**
-     * 发送消息
-     * @param message
-     */
+    */
+/**
+ * 发送消息
+ * @param message
+ *//*
+
     public void send(String message) {
         try {
             Message msg = new Message(rocketMqProperties.getTopic(), message.getBytes(StandardCharsets.UTF_8));
@@ -54,3 +62,4 @@ public class MqPublisher {
         System.out.println(now);
     }
 }
+*/

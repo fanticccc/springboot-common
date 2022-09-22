@@ -59,12 +59,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> selectAny( String userName, String name, Integer age, String sex, Integer isMry) {
+    public List<User> selectAny(String userName, String name, Integer age, String sex, Integer isMry) {
         List<User> users = Lists.newArrayList();
-        try{
+        try {
             users = userMapper.selectAny(userName, name, age, sex, isMry);
             return users;
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error(e.getMessage());
             return null;
         }

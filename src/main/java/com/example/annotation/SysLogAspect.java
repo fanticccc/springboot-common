@@ -9,6 +9,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -25,9 +26,11 @@ import java.lang.reflect.Method;
 public class SysLogAspect {
 
     @Pointcut("@annotation(com.example.annotation.SysLog)")
-    public void logPointCut(){
-
+    public void logPointCut() {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
     }
+
     @Around("logPointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         long beginTime = System.currentTimeMillis();
@@ -36,7 +39,7 @@ public class SysLogAspect {
         Object result = joinPoint.proceed();
         // 执行时长
         long time = System.currentTimeMillis() - beginTime;
-        MethodSignature signature = (MethodSignature)joinPoint.getSignature();
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 
         // 获取自定义注解上的值
@@ -50,11 +53,10 @@ public class SysLogAspect {
 
         //方法入参
         Object[] args = joinPoint.getArgs();
-
-        System.out.println("注解上的值："+ (StringUtils.isEmpty(sysLogValue) ? syslogDesc : sysLogValue));
-        System.out.println("执行的类和方法："+className + "."+methodName);
-        System.out.println("执行时长："+time+"ms");
-        System.out.println("执行结果："+result);
-        return result ;
+        System.out.println("注解上的值：" + (StringUtils.isEmpty(sysLogValue) ? syslogDesc : sysLogValue));
+        System.out.println("执行的类和方法：" + className + "." + methodName);
+        System.out.println("执行时长：" + time + "ms");
+        System.out.println("执行结果：" + result);
+        return result;
     }
 }

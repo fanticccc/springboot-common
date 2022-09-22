@@ -17,18 +17,15 @@ import java.time.LocalDateTime;
  */
 @Component
 @EnableScheduling //开启定时任务
-@EnableAsync //开启多线程
 public class TheadScheduleTask {
-    @Async("adminThreadPool")
     @Scheduled(fixedDelay = 5000)
-    public void first(){
-        System.out.println(" Scheduled start:"+ LocalDateTime.now().toLocalTime()+"\r\n线程"+Thread.currentThread().getName());
+    public void first() {
+        System.out.println(" Scheduled start:" + LocalDateTime.now().toLocalTime() + "--线程" + Thread.currentThread().getName());
 
     }
     /* @Async
     @Scheduled(fixedDelay = 2000)
     public void second() {
         System.out.println("second Scheduled start : " + LocalDateTime.now().toLocalTime() + "\r\n线程 : " + Thread.currentThread().getName());
-
     }*/
 }

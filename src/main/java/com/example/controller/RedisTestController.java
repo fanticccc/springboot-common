@@ -29,36 +29,41 @@ public class RedisTestController {
     private RedisUtils redisUtils;
 
     @Autowired
-    private  RedisTemplate redisTemplate ;
+    private RedisTemplate redisTemplate;
 
     @GetMapping("/setData")
-    public void setRedisData(){
-        redisUtils.set("redisKey","==Hello word==");
-        System.out.println("存入数据："+"Hello word");
+    public void setRedisData() {
+        String msg = "==Hello word==";
+        redisUtils.set("redisKey", msg);
+        System.out.println("存入数据：" + msg);
     }
+
     @GetMapping("/setData1")
-    public void setRedisData1(){
-        redisUtils.set("code","1235qea2-dad");
-        System.out.println("存入数据："+"Hello word");
+    public void setRedisData1() {
+        redisUtils.set("code", "1235qea2-dad");
+        System.out.println("存入数据：" + "Hello word");
     }
 
     @GetMapping("/getData1")
-    public void getRedisData1(){
-            Object redisData = redisUtils.get("redisKey");
-            System.out.println("Redis中获取到的数据："+redisData);
+    public void getRedisData1() {
+        Object redisData = redisUtils.get("redisKey");
+        System.out.println("Redis中获取到的数据：" + redisData);
     }
+
     @GetMapping("/getData2")
-    public void getRedisData2(){
+    public void getRedisData2() {
         Object redisData = redisUtils.get("code");
-        System.out.println("Redis中获取到的数据："+redisData);
+        System.out.println("Redis中获取到的数据：" + redisData);
     }
+
     @GetMapping("/getData3")
-    public void getRedisData3(){
+    public void getRedisData3() {
         Object redisData = redisTemplate.opsForValue().get("code");
-        System.out.println("Redis中获取到的数据："+redisData);
+        System.out.println("Redis中获取到的数据：" + redisData);
     }
+
     @PostMapping("expire")
-    public void setExpireTime(){
+    public void setExpireTime() {
         boolean code = redisUtils.exists("code");
         Boolean code1 = redisUtils.expire("code", 5000, TimeUnit.MILLISECONDS);
         System.out.println(code);

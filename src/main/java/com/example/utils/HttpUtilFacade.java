@@ -41,7 +41,7 @@ public class HttpUtilFacade {
     }
 
     public String execute(String url)
-        throws HttpStatusCodeException, IOException {
+            throws HttpStatusCodeException, IOException {
 
         HttpClient httpClient = getHttpClient();
 
@@ -61,19 +61,15 @@ public class HttpUtilFacade {
 
                 if (statusCode == HttpStatus.SC_OK) {
                     return body;
-                }
-                else {
+                } else {
                     throw new HttpStatusCodeException(statusCode, body);
                 }
-            }
-            else {
+            } else {
                 throw new IOException("get null content for this request");
             }
-        }
-        catch (ClientProtocolException e) {
+        } catch (ClientProtocolException e) {
             throw e;
-        }
-        finally {
+        } finally {
             // httpClient.getConnectionManager().shutdown();
 
             if (response != null) {

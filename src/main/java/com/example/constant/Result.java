@@ -29,4 +29,7 @@ public class Result<T> {
      * 数据
      */
     private T content;
+    public static int SUCCESS = 111;
+    public static int FAIL = 222;
+
 }

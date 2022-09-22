@@ -23,33 +23,32 @@ import java.util.Map;
 
 public class HttpEasyUtil {
 
-    private static final String  _GET = "GET";
+    private static final String _GET = "GET";
 
-    private static final String  _POST = "POST";
+    private static final String _POST = "POST";
 
-    private static final int  baseTimeout = 30;
+    private static final int baseTimeout = 30;
 
     /**
-     *
-     * @param httpUrl 请求地址
-     * @param prams  参数
+     * @param httpUrl   请求地址
+     * @param prams     参数
      * @param character 编码
      * @return
      * @throws Exception
      */
-    public static String doPost(String httpUrl, Map<String,String> prams, String character) throws Exception {
-        URL url ;
+    public static String doPost(String httpUrl, Map<String, String> prams, String character) throws Exception {
+        URL url;
         StringBuilder pramStr = new StringBuilder();
-        InputStream in = null ;
-        OutputStreamWriter outWriter = null ;
-        HttpURLConnection connection = null ;
-        if (StringUtils.isEmpty(httpUrl)){
+        InputStream in = null;
+        OutputStreamWriter outWriter = null;
+        HttpURLConnection connection = null;
+        if (StringUtils.isEmpty(httpUrl)) {
             throw new RuntimeException("request url null ~ ");
         }
         //定义需要访问的地址
-         url = new URL(httpUrl);
+        url = new URL(httpUrl);
         //获取连接对象
-         connection = (HttpURLConnection)url.openConnection();
+        connection = (HttpURLConnection) url.openConnection();
         //请求类型
         connection.setRequestMethod(_POST);
         //携带参数
@@ -58,7 +57,7 @@ public class HttpEasyUtil {
         connection.setConnectTimeout(baseTimeout * 1000);
         connection.setReadTimeout(baseTimeout * 2000);
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        if (!CollectionUtils.isEmpty(prams)){
+        if (!CollectionUtils.isEmpty(prams)) {
             for (Map.Entry<String, String> pram : prams.entrySet()) {
                 pramStr.append("&").append(pram.getKey()).append("=").append(pram.getValue());
             }
@@ -70,6 +69,6 @@ public class HttpEasyUtil {
         //接收返回值
         in = connection.getInputStream();
         String response = StreamUtils.copyToString(in, Charset.forName(character));
-        return response ;
+        return response;
     }
 }

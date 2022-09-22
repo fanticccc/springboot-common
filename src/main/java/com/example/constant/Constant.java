@@ -12,5 +12,5 @@ public class Constant {
     /**
      * 逗号
      */
-    public final static String DEFAULT_MULTI_COMMA_SPLIT = "," ;
+    public final static String DEFAULT_MULTI_COMMA_SPLIT = ",";
 }

@@ -23,12 +23,12 @@ import java.util.ResourceBundle;
 public class ShutDownController {
 
     @Autowired
-    private ApplicationContext context ;
+    private ApplicationContext context;
 
     @GetMapping("/stop")
-    public void stop(){
+    public void stop() {
         log.info(" ============== enter  SpringBoot ================ ");
-        ConfigurableApplicationContext ctx = (ConfigurableApplicationContext)context;
+        ConfigurableApplicationContext ctx = (ConfigurableApplicationContext) context;
         ctx.close();
         log.info(" ============== exit   SpringBoot ================ ");
     }

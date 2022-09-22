@@ -11,6 +11,7 @@ import com.example.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,28 +28,40 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService ;
+    private UserService userService;
 
     @Autowired
     public UserCache userCache;
+
     /**
      * 查新所有
+     *
      * @return
      */
     @CrossOrigin
     @GetMapping("/selectAll")
-    public List<User> selectAll(
-            @ApiParam(value = "分页pageSize") @RequestParam(value = "pageSize", required = false,defaultValue = "10") Integer pageSize,
+    @SysLog("查询所有用户")
+    @ApiOperation(notes = "查询所有用户",value = "查询所有用户")
+    public AnyUserResultRes selectAll(
+            @ApiParam(value = "分页pageSize") @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize,
             @ApiParam(value = "分页pageNum,页码1开始") @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum
-    ){
+    ) {
+        // Result <List<User>> result = new Result<>();
+        AnyUserResultRes result = new AnyUserResultRes();
         userService.selectAll();
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         List<User> list = userService.selectAll();
-        return list;
+        result.setCode(Result.SUCCESS);
+        result.setContent(list);
+        result.setTotal(list.size());
+        result.setCurrentPage(pageNum);
+        result.setPageSize(pageSize);
+        return result;
     }
 
     /**
      * 测试 springboot 缓存
+     *
      * @param id
      * @return
      */
@@ -71,8 +84,10 @@ public class UserController {
         Cache cache = cacheManage.getCache();
 
     }*/
+
     /**
      * 按条件查询符合要求用户
+     *
      * @param userName
      * @param name
      * @param age
@@ -141,27 +156,43 @@ public class UserController {
         }
         return new Result().setCode(ResultStatus.SUCCESS.getCode()).setMessage(ResultStatus.SUCCESS.getMsg()).setContent(user);
     }
+
     /**
-     * 添加用户
+     * 删除用户
      * @return
      */
-     @GetMapping("/addUser")
-     public String addUser(){
+    @CrossOrigin
+    @PostMapping ("/deleteUser")
+    public String deleteUser(@RequestBody String id) {
         try {
-            userService.addUser(new User(18,"cmo","小黄ya",188,"男",0));
-            return ResultStatus.SUCCESS.getMsg();
-        }catch (Exception e){
+            userService.deleteUserById(Integer.parseInt(id));
+            return "用户id为"+id+"的用户删除成功！";
+        } catch (Exception e) {
             log.error(e.getMessage());
             return e.getMessage();
         }
     }
+
+    @CrossOrigin
+    @PostMapping ("/updateOrAddUser")
+    public String addUser(@RequestBody User user) {
+        log.info(user.getName());
+        try {
+            userService.addUser(new User(18, "cmo", "小黄ya", 188, "男", 0));
+            return ResultStatus.SUCCESS.getMsg();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return e.getMessage();
+        }
+    }
+
     @CrossOrigin
     @PostMapping("/addAll")
     @Transactional(rollbackFor = Exception.class)
-    public Boolean addAll(List<User> list){
-         list.forEach(a->{
+    public Boolean addAll(List<User> list) {
+        list.forEach(a -> {
             userService.addUser(a);
-         });
-         return null;
+        });
+        return null;
     }
 }

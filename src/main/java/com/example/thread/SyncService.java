@@ -18,6 +18,6 @@ public class SyncService {
     @Async("adminThreadPool")
     public void dealMsgBySync() throws InterruptedException {
         Thread.sleep(1000);
-        log.info("sync do ....." +Thread.currentThread().getName());
+        log.info("sync do ....." + Thread.currentThread().getName());
     }
 }

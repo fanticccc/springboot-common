@@ -34,7 +34,7 @@ public class ThreadPoolUtil {
     /**
      * 阻塞队列
      */
-    private static BlockingQueue<Runnable> QUEUE =  new ArrayBlockingQueue<Runnable>(100);
+    private static BlockingQueue<Runnable> QUEUE = new ArrayBlockingQueue<Runnable>(100);
     /**
      * 进入线程池由main线程执行的任务个数
      */
@@ -54,20 +54,24 @@ public class ThreadPoolUtil {
     static {
         pool.prestartAllCoreThreads();
     }
+
     /**
      * 获取线程池方法
+     *
      * @return ThreadPoolExecutor
      */
-    public static ThreadPoolExecutor getPool(){
+    public static ThreadPoolExecutor getPool() {
         return pool;
     }
-   public static class BackendCallerRunsPolicy extends ThreadPoolExecutor.CallerRunsPolicy {
-       public BackendCallerRunsPolicy() {
-       }
-       @Override
-       public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
-           super.rejectedExecution(r, e);
-           mainTaskNum.getAndIncrement();
-       }
-   }
+
+    public static class BackendCallerRunsPolicy extends ThreadPoolExecutor.CallerRunsPolicy {
+        public BackendCallerRunsPolicy() {
+        }
+
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
+            super.rejectedExecution(r, e);
+            mainTaskNum.getAndIncrement();
+        }
+    }
 }

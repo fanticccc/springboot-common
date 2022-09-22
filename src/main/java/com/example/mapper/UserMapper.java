@@ -25,10 +25,10 @@ public interface UserMapper {
 
     int deleteUserById(int id);
 
-    List<User>selectAny(@Param("userName")String userName,
-                        @Param("name")String name,
-                        @Param("age")Integer age,
-                        @Param("sex")String sex,
-                        @Param("isMry")Integer isMry);
+    List<User> selectAny(@Param("userName") String userName,
+                         @Param("name") String name,
+                         @Param("age") Integer age,
+                         @Param("sex") String sex,
+                         @Param("isMry") Integer isMry);
 
 }

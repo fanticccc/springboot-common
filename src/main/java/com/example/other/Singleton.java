@@ -29,7 +29,10 @@ public class Singleton {
 //----------------------------------------------
     //双重锁（线程安全）
     private static Singleton instance = null;
-    private Singleton() { }
+
+    private Singleton() {
+    }
+
     public static synchronized Singleton getInstance() {
         if (instance == null) {
             synchronized (Singleton.class) {

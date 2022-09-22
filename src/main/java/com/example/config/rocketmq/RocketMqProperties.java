@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
  * com.exc.song.config.rocketmq
  */
 @Data
-@Component
-//@PropertySource("application.yml")
 @ConfigurationProperties(prefix = "system-parameters.rocketmq")
 
 public class RocketMqProperties {

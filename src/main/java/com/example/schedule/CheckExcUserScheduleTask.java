@@ -31,53 +31,56 @@ import java.util.List;
  * com.example.schedule
  */
 @Slf4j
-@Configuration //1.主要用于标记配置类，兼备Component的效果
+@Configuration //1.主要用于标记配置类，兼备Component的效
 @Transactional(rollbackFor = Exception.class)
 public class CheckExcUserScheduleTask {
 
     @Autowired
-    private UserService userService ;
+    private UserService userService;
     @Autowired
-    private EmailSender sender ;
+    private EmailSender sender;
     // 管理员邮箱
     private static final String EMAIL_NUMBER = "2548533500@qq.com";
 
     //发送邮件开关
     @Value("${system-parameters.is_send_email}")
     private String IS_SEND_EMAIL;
+
     //3.添加定时任务 扫描user表
     @Scheduled(cron = "${system-parameters.scheduling.user}")
-    private void task(){
-        log.info("Spring Scheduling CheckExcUserScheduleTask start--------:{}",LocalDateTime.now().toLocalTime() );
-         // sql 不合理，where条件查询直接附带条件：IsMry>1 > 建议修改 --TODO
+    private void task() {
+        log.info("Spring Scheduling CheckExcUserScheduleTask start--------:{}", LocalDateTime.now().toLocalTime());
+        // sql 不合理，where条件查询直接附带条件：IsMry>1 > 建议修改 --TODO
         List<User> list = userService.selectAll();
         //遍历grade大于1的异常用户 存至队列
         for (User user : list) {
-            if (!CollectionUtils.isEmpty(list) && user.getIsMry() > 1 ){
-                if (StringUtils.isNotEmpty(IS_SEND_EMAIL) && IS_SEND_EMAIL.equals("true")){
+            if (!CollectionUtils.isEmpty(list) && user.getIsMry() > 1) {
+                if (StringUtils.isNotEmpty(IS_SEND_EMAIL) && IS_SEND_EMAIL.equals("true")) {
                     sendEmail(user);
                 }
                 //异常用户 放入队列
-                try{
+                try {
                     SysQueueUtils.setObj(new Grade().setName(user.getName()).setGrade(user.getIsMry()));
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     log.info("异常用户存队列异常，请检查该用户信息完整性。");
                 }
                 //删除此异常用户
                 userService.deleteUserById(user.getId());
-                log.info(" Find ExceptionUser name:{} ",user.getName());
+                log.info(" Find ExceptionUser name:{} ", user.getName());
             }
         }
     }
+
     /**
      * 将异常用户信息 发送邮件通知管理员
+     *
      * @param user 异常用户
      */
-    private void sendEmail(User user){
-        if (!ObjectUtils.isEmpty(user)){
+    private void sendEmail(User user) {
+        if (!ObjectUtils.isEmpty(user)) {
             String subject = "Abnormal user information ";
-            sender.send(subject,user.toString(),EMAIL_NUMBER);
-            log.info("异常用户user:{},发送邮件 告警成功！",user.getName());
+            sender.send(subject, user.toString(), EMAIL_NUMBER);
+            log.info("异常用户user:{},发送邮件 告警成功！", user.getName());
         }
     }
 }
