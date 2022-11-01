@@ -50,19 +50,6 @@ public class ThreadPoolConfig {
         return initThreadPool2("emailThreadPool--");
     }
 
-    private ThreadPoolTaskExecutor initThreadPool(String poolName) {
-        /*ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
-        );*/
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(threadPoolProperties.getCorePoolSize());
-        executor.setMaxPoolSize(threadPoolProperties.getMaxPoolSize());
-        executor.setKeepAliveSeconds(threadPoolProperties.getKeepAliveSeconds());
-        executor.setQueueCapacity(threadPoolProperties.getQueueCapactiy());
-        // 拒绝策略
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        return executor;
-    }
-
     private ThreadPoolExecutor initThreadPool2(String poolName) {
         CorsFilter corsFilter = new CorsFilter();
         ThreadFactory threadFactory = new CustomizableThreadFactory(poolName);
@@ -75,6 +62,18 @@ public class ThreadPoolConfig {
                 threadFactory,
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
+        return executor;
+    }
+    private ThreadPoolTaskExecutor initThreadPool(String poolName) {
+        /*ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
+        );*/
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(threadPoolProperties.getCorePoolSize());
+        executor.setMaxPoolSize(threadPoolProperties.getMaxPoolSize());
+        executor.setKeepAliveSeconds(threadPoolProperties.getKeepAliveSeconds());
+        executor.setQueueCapacity(threadPoolProperties.getQueueCapactiy());
+        // 拒绝策略
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         return executor;
     }
 }
