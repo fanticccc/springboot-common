@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * @Author song
+ * @Author SongJunBao
  * @Description: 測試注解開啓定時任務 扫描user表检测异常用户(0 未婚 1 已婚 其他都为异常)
  * @Date 2022/1/19 16:33
  * @Version 1.0

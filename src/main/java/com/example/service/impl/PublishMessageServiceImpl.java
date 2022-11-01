@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 import java.util.*;
 
 /**
- * @Author song
+ * @Author SongJunBao
  * @Description: 处理、发送钉钉
  * @Date 2022/4/1 10:46
  * @Version 1.0

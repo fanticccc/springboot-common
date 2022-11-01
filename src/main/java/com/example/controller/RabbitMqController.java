@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.consumer.starter.ExplainService;
 import com.example.pojo.Message;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,11 +29,13 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("rabbitmq")
+@Api(value = "测试rabbitmq",tags = "测试rabbitmq")
 public class RabbitMqController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     @PostMapping("send")
+    @ApiOperation(value = "rabbitmq发送消息",notes = "rabbitmq发送消息")
     public String sendMsg() {
         String messageId = String.valueOf(UUID.randomUUID());
         String messageData = "test message, hello!";

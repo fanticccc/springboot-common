@@ -1,4 +1,7 @@
 #基础配置
+explain:
+  user-name: SongJunBao
+  project-name: comprehensive
 #端口号
 server:
   port: 8089
@@ -6,14 +9,14 @@ server:
     context-path: /song
 
 spring:
-#  mysql连接配置
+  #  mysql连接配置
   datasource:
     username: root
     password: Admin123
     url: jdbc:mysql://127.0.0.1:3306/springboot_test?useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-# redis连接配置
+  # redis连接配置
   redis:
     host: 127.0.0.1
     port: 6379
@@ -54,13 +57,13 @@ logging:
 # 系统参数
 system-parameters:
   thread-pool:
-#    核心线程数
+    #    核心线程数
     corePoolSize: 3
-#    最大线程数
+    #    最大线程数
     maxPoolSize: 6
-#    空闲线程存活时间
+    #    空闲线程存活时间
     keepAliveSeconds: 10
-#    队列大小
+    #    队列大小
     queueCapactiy: 3
   # 定时任务 cron 表达式
   scheduling:
@@ -74,12 +77,15 @@ system-parameters:
     topic: ROCKETMQ_SONG_TOPIC
     gd_produce_group: ROCKETMQ_SONG_TOPIC
   cache:
-#   缓存最大值
+    #   缓存最大值
     max_size: 500
-#   缓存时间（秒）
+    #   缓存时间（秒）
     cache_time: 500
   # 异常用户处理后是否发送邮件通知
   is_send_email: false
+  # 生成二维码的本地路径
+  qrcode_path: E:\gitCode\qr_data
+
 
 #配置钉钉参数
 dingding-parmeters:

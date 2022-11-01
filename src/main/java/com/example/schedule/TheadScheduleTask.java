@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 /**
- * @Author song
- * @Description:
+ * @Author SongJunBao
+ * @Description: 测试定时任务
  * @Date 2022/1/19 16:52
  * @Version 1.0
  * com.example.schedule
@@ -20,8 +20,7 @@ import java.time.LocalDateTime;
 public class TheadScheduleTask {
     @Scheduled(fixedDelay = 5000)
     public void first() {
-        System.out.println(" Scheduled start:" + LocalDateTime.now().toLocalTime() + "--线程" + Thread.currentThread().getName());
-
+        //System.out.println(" Scheduled start:" + LocalDateTime.now().toLocalTime() + "--线程" + Thread.currentThread().getName());
     }
     /* @Async
     @Scheduled(fixedDelay = 2000)

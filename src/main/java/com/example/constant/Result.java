@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
- * @Author song
+ * @Author SongJunBao
  * @Description: controller 结果模板
  * @Date 2022/1/26 14:51
  * @Version 1.0
@@ -29,7 +29,7 @@ public class Result<T> {
      * 数据
      */
     private T content;
-    public static int SUCCESS = 111;
-    public static int FAIL = 222;
+    public static int SUCCESS = 20000;
+    public static int FAIL = 100;
 
 }

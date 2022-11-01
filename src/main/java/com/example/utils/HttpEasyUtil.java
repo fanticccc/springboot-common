@@ -14,7 +14,7 @@ import java.nio.charset.Charset;
 import java.util.Map;
 
 /**
- * @Author song
+ * @Author SongJunBao
  * @Description: Http請求工具類
  * @Date 2022/4/20 10:21
  * @Version 1.0

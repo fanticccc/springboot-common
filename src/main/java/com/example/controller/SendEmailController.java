@@ -2,6 +2,8 @@ package com.example.controller;
 
 import com.example.utils.EmailSender;
 import com.example.utils.ReadProperty;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("email")
 @Slf4j
+@Api(value = "测试邮件功能",tags = "测试邮件功能")
 public class SendEmailController {
 
     private final static String TO_EMAIL = "2548533500@qq.com";
@@ -20,6 +23,7 @@ public class SendEmailController {
     private EmailSender emailSender;
 
     @RequestMapping(value = "sendMsg", method = RequestMethod.POST)
+    @ApiOperation(value = "发送邮件",notes = "发送邮件")
     public void sendMsg() {
         log.info("send email start ...");
         try {
@@ -31,6 +35,7 @@ public class SendEmailController {
     }
 
     @GetMapping("getValue")
+    @ApiOperation(value = "获取yml信息",notes = "获取yml信息")
     public String getValue() {
         return ReadProperty.get("country", "name");
     }

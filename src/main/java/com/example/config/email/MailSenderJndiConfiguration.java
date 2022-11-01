@@ -12,7 +12,7 @@
 //import javax.mail.Session;
 //
 ///**
-// * @Author song
+// * @Author SongJunBao
 // * @Description:
 // * @Date 2022/5/5 11:44
 // * @Version 1.0

@@ -26,7 +26,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Author song
+ * @Author SongJunBao
  * @Description: 线程池使用
  * @Date 2022/6/14 10:27
  * @Version 1.0
