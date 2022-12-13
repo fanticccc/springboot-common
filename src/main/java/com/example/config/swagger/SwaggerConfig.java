@@ -1,6 +1,7 @@
 package com.example.config.swagger;
 
 import com.google.common.base.Predicates;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -19,8 +20,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
+@ConditionalOnExpression("${swagger.open:true}")
 public class SwaggerConfig {
-
 //    @Bean
 //    public Docket webApiConfig(){
 //
@@ -80,7 +81,7 @@ public Docket docket() {
         Contact contact = new Contact(
                 "剑舞红颜笑", // 作者姓名
                 "https://www.csdn.net/?spm=1001.2014.3001.4476", // 作者网址
-                "307502005@qq.com"); // 作者邮箱
+                "2548533500@qq.com"); // 作者邮箱
         return new ApiInfoBuilder()
                 .title("测试项目-接口文档") // 标题
                 .description("众里寻他千百度，慕然回首那人却在灯火阑珊处") // 描述

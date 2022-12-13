@@ -29,4 +29,6 @@ public interface UserService {
 
     List<User> selectAny(String userName, String name, Integer age, String sex, Integer isMry);
 
+    List<User>checkExcUser();
+
 }

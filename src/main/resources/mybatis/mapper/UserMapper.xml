@@ -54,5 +54,9 @@
         select * from test_user where name=#{name}
     </select>
 
+    <select id="checkExcUser" resultType="com.example.pojo.User">
+        select * from test_user where IsMry>1
+    </select>
+
 
 </mapper>

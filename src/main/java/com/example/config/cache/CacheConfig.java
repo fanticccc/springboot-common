@@ -1,5 +1,7 @@
 package com.example.config.cache;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @EnableCaching
 @Configuration
+@ConditionalOnProperty(name = "use.cache",havingValue = "true",matchIfMissing = false)
+@Slf4j
 public class CacheConfig {
     @Bean
     public ConcurrentMapCacheManager cacheManager(){

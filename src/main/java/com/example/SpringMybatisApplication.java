@@ -1,14 +1,8 @@
 package com.example;
 
-import com.example.config.rocketmq.RocketMqConfig;
-import com.example.config.rocketmq.RocketMqProperties;
 import com.example.consumer.starter.ExplainService;
-import com.example.controller.RabbitMqController;
 import com.example.service.GradeService;
 import com.example.thread.SyncTaskThread;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
@@ -44,7 +38,7 @@ import java.net.UnknownHostException;
 @EnableScheduling // 开启定时任务
 @EnableAsync
 
-public class SpringMybatisApplication extends SpringBootServletInitializer implements ApplicationRunner, CommandLineRunner {
+public class SpringMybatisApplication extends SpringBootServletInitializer implements ApplicationRunner {
     @Autowired
     private GradeService gradeService;
     @Getter
@@ -77,13 +71,18 @@ public class SpringMybatisApplication extends SpringBootServletInitializer imple
     public void run(ApplicationArguments args) {
         log.info(" springboot project start  。。。 ");
         //启动服务的时候 将线程开启 处理异常用户信息
-//        SyncTaskThread syncTaskThread = new SyncTaskThread(gradeService);
-//        syncTaskThread.start();
+        SyncTaskThread syncTaskThread = new SyncTaskThread(gradeService);
+        syncTaskThread.start();
     }
 
-    @Override
+    /**
+     * 测试自定义stater
+     * @param args
+     * @throws Exception
+     */
+    /*@Override
     public void run(String... args) throws Exception {
         log.info("CommandLineRunner start . . .");
         explainService.explain("李四","springboot starter。。。");
-    }
+    }*/
 }

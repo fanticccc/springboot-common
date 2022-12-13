@@ -23,7 +23,6 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 public class SyncTaskThread extends Thread {
-
     private GradeService gradeService;
 
     public SyncTaskThread(GradeService gradeService) {
@@ -46,20 +45,6 @@ public class SyncTaskThread extends Thread {
 
     private void doTask(Grade grade) {
         //将异常用户存入grade表
-        // GradeService gradeService = (GradeService) getBean("gradeService");
         gradeService.addGrade(grade);
     }
-
-/*    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        context = applicationContext ;
-    }
-
-    public static ApplicationContext getApplicationContent(){
-        return context ;
-    }
-
-    public static Object getBean(String name){
-        return getApplicationContent().getBean(name);
-    }*/
 }

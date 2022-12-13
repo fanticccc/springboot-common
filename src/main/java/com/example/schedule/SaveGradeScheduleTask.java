@@ -19,11 +19,9 @@ import java.time.LocalDateTime;
  * com.example.schedule
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class SaveGradeScheduleTask implements ApplicationContextAware {
 
-    /* @Autowired
-     private SyncTaskThread syncTaskThread;*/
     private static ApplicationContext context;
 
     @Scheduled(cron = "${system-parameters.scheduling.grade}")

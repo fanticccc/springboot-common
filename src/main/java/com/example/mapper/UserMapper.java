@@ -31,4 +31,6 @@ public interface UserMapper {
                          @Param("sex") String sex,
                          @Param("isMry") Integer isMry);
 
+    List<User> checkExcUser();
+
 }

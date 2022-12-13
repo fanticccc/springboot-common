@@ -47,14 +47,14 @@ public class CheckExcUserScheduleTask {
     private String IS_SEND_EMAIL;
 
     //3.添加定时任务 扫描user表
-    @Scheduled(cron = "${system-parameters.scheduling.user}")
+    //@Scheduled(cron = "${system-parameters.scheduling.user}")
     private void task() {
         log.info("Spring Scheduling CheckExcUserScheduleTask start--------:{}", LocalDateTime.now().toLocalTime());
         // sql 不合理，where条件查询直接附带条件：IsMry>1 > 建议修改 --TODO
-        List<User> list = userService.selectAll();
+        List<User> list = userService.checkExcUser();
         //遍历grade大于1的异常用户 存至队列
         for (User user : list) {
-            if (!CollectionUtils.isEmpty(list) && user.getIsMry() > 1) {
+            if (!CollectionUtils.isEmpty(list)) {
                 if (StringUtils.isNotEmpty(IS_SEND_EMAIL) && IS_SEND_EMAIL.equals("true")) {
                     sendEmail(user);
                 }
@@ -62,11 +62,13 @@ public class CheckExcUserScheduleTask {
                 try {
                     SysQueueUtils.setObj(new Grade().setName(user.getName()).setGrade(user.getIsMry()));
                 } catch (Exception ex) {
-                    log.info("异常用户存队列异常，请检查该用户信息完整性。");
+                    log.info("异常用户存队列异常：{}",ex.getMessage());
                 }
                 //删除此异常用户
                 userService.deleteUserById(user.getId());
                 log.info(" Find ExceptionUser name:{} ", user.getName());
+            }else {
+                log.info("暂无异常用户:{}",LocalDateTime.now().toLocalTime());
             }
         }
     }
