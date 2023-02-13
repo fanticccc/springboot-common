@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.constant.ResultStatus;
 import com.example.service.PublishMessageService;
 import com.example.utils.DingTalkUtil;
 import io.swagger.annotations.Api;
@@ -43,5 +44,11 @@ public class DingTalkTestController {
     @ApiOperation(value = "发送钉钉消息",notes = "发送钉钉消息" )
     public void sendMsg2(String str) {
         publishMessageService.sendToDingDingInfo("ding测试消息2:" + str, null);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ResultStatus.SUCCESS.getCode());
+        System.out.println(ResultStatus.FAIL.getCode());
+
     }
 }

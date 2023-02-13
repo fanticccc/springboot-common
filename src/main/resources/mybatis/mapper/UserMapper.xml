@@ -32,7 +32,9 @@
     </select>
 
     <select id="selectUserById" resultType="com.example.pojo.User">
-        select * from test_user where id=#{id}
+        select *
+        from test_user
+        where id=#{id}
     </select>
 
     <insert id="addUser" parameterType="com.example.pojo.User">
@@ -42,7 +44,7 @@
 
     <update id="updateUser" parameterType="com.example.pojo.User">
         update test_user set
-        username=#{userName},name=#{name},age=#{age},sex=#{sex},isMry=#{isMry}
+        username = #{userName},'name'= #{name},age=#{age},sex=#{sex},isMry=#{isMry}
         where id= #{id}
     </update>
 

@@ -2,6 +2,8 @@ package com.example.service;
 
 import com.example.pojo.Grade;
 
+import java.util.List;
+
 /**
  * @Author SongJunBao
  * @Description:
@@ -11,5 +13,9 @@ import com.example.pojo.Grade;
  */
 
 public interface GradeService {
+
     int addGrade(Grade grade);
+
+    List<Grade> getGradeList();
+
 }

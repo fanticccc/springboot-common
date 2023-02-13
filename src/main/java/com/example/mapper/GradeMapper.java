@@ -3,6 +3,8 @@ package com.example.mapper;
 import com.example.pojo.Grade;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Author SongJunBao
  * @Description:
@@ -12,5 +14,9 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface GradeMapper {
+
     int addGrade(Grade grade);
+
+    List<Grade> getGradeList();
+
 }

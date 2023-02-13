@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author SongJunBao
  * @Description:
@@ -26,5 +28,10 @@ public class GradeServiceImpl implements GradeService {
     @Override
     public int addGrade(Grade grade) {
         return gradeMapper.addGrade(grade);
+    }
+
+    @Override
+    public List<Grade> getGradeList() {
+        return gradeMapper.getGradeList();
     }
 }

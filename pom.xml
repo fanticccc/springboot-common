@@ -28,6 +28,21 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>2.11.2</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <!--            <version>1.1.2-beta4</version>-->
+            <version>2.2.6</version>
+        </dependency>
+
+
         <!--springboot-aop-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

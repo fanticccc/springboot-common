@@ -8,5 +8,8 @@
         insert into test_user_grade(id,name,grade)
         values(#{id},#{name},#{grade})
     </insert>
+    <select id="getGradeList" resultType="Grade">
+        select * from test_user_grade ;
+    </select>
 
 </mapper>

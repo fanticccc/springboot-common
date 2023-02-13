@@ -95,7 +95,8 @@ dingding-parmeters:
   dingding_api_url: https://oapi.dingtalk.com/robot/send?access_token=8bc63dde817067241c978977cbff64168db667ad14eb4ccb4eb744d612da280c
 use:
 #  是否开启缓存
-  cache: true
+  cache: false
   rocketmq: false
+  rabbitmq: false
 swagger:
   open: false
