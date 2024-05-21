@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.TYPE,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Cacheable(value = "users",key = "#id",condition = "#id<5")
+@Cacheable(value = "users",key = "#id",condition = "#id<5",sync = true)
 public @interface MyCache {
     // String[] value();
 }

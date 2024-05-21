@@ -1,6 +1,12 @@
 package com.example.test;
 
-import lombok.SneakyThrows;
+import com.example.utils.ReadProperty;
+
+import java.io.InputStream;
+import java.util.ResourceBundle;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @Author SongJunBao
@@ -12,16 +18,15 @@ import lombok.SneakyThrows;
 
 public class Demo1 {
     public static void main(String[] args) {
-        System.out.println("aaa");
-        new Thread(new Runnable() {
-            @SneakyThrows
-            @Override
-            public void run() {
-                for (int i = 0; i < 5; i++) {
-                    Thread.sleep(1000);
-                    System.out.print("bbb、");
-                }
-            }
-        }).start();
+//        Executors.newFixedThreadPool(2);
+//        Executors.newCachedThreadPool();
+        System.out.println(ReadProperty.get("application","server.port" ));
+        //System.out.println(ResourceBundle.getBundle("application").getString("server.port"));
+        //InputStream application = Demo1.class.getClassLoader().getResourceAsStream("application");
+
+//        ThreadPoolExecutor executor = new ThreadPoolExecutor();
+        //Thread.State
+        String application = ResourceBundle.getBundle("application").getString("server.port");
+
     }
 }

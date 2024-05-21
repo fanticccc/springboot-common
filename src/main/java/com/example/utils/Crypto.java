@@ -85,13 +85,19 @@ public class Crypto {
      * @param args args
      */
     public static void main(String[] args) {
-            String str = "hello world";
-            String key = "12345678qwertyui123456789";
+            String str = "pwd1001";
+            String a = "2efRIeme1pZHJwbfDb2n6kXZYtZrFgeCGclUut7Sf7ZgmQl9WI6of6zVT0y1wECVFhFy2zjdLqqorkdZIPLQcQV69c/ojMWmkaq7R/MA+EFfMo47TKqFPvq1ZTCAsDgeHN7qR1eAM0Pbp3l4QUfQujYskmfs3XwyaVpvVuOskjSCXQv0+KeonEDDQLHgAFxtGmd1uz3zMklXjB2XX9uGRBHeR7kVg26qJcR8VTGSQFGFDOg4m4HXcWxMtpx0Sp8rehsmiPYiLVa/UAGDCTHKEJVhiutJTYHhxiZVFPIpgVMdjgaqcyfmOxXOZvxjuNh947SvwBozGWo8mUDP6AJ6dDgkMo2Kw+W7PN9Qxfe6W7Lu7wnkyP49Rw==";
+            String key = "1464b900346646099b265c7bca650d59";
+            String order = "orderId=test_song_003|beginDate=2022-10-17 15:36:33|endDate=2022-11-18 23:59:59|validDays=200|autoRenew=2|productId=s_VIP_m|payMoney=200|itvAccount=zte4kzz003|baseProductId=base_sport|contentId=1266232|contentName=狮子山下|sourceSp=bestv|program=sport";
+        String ps = encrypt(order, key);
+        System.out.println(ps);
+
+       // System.out.println(decrypt(a, key));
             String encrypt = encrypt(str,key);
             String decrypt = decrypt(encrypt, key);
-            System.out.println("加密前："+str);
-            System.out.println("加密后："+encrypt);
-            System.out.println("解密后："+decrypt);
+            //System.out.println("加密前："+str);
+           // System.out.println("加密后："+encrypt);
+           // System.out.println("解密后："+decrypt);
             //ifa/YLPu2pJ2GdLCgSErag==
     }
 }

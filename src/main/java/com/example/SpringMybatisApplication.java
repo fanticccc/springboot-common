@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.consumer.starter.ExplainService;
+import com.example.pojo.User;
 import com.example.service.GradeService;
 import com.example.thread.SyncTaskThread;
 import lombok.Getter;

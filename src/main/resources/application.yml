@@ -18,8 +18,8 @@ spring:
 
   # redis连接配置
   redis:
-    host: 127.0.0.1
-    port: 6379
+    host: 139.224.128.209
+    port: 9876
     password: 123456
     database: 0
   #  qq邮件配置
@@ -73,9 +73,9 @@ system-parameters:
     grade: 0 0/1 * * * ?
   #配置RocketMQ参数
   rocketmq:
-    ipPort: 127.0.0.1:9876
-    topic: ROCKETMQ_SONG_TOPIC
-    gd_produce_group: ROCKETMQ_SONG_TOPIC
+    ipPort: 139.224.128.209:9876
+    topic: SONG_TOPIC
+    gd_produce_group: SONG_TOPIC
   cache:
     #   缓存最大值
     max_size: 500
@@ -92,7 +92,7 @@ dingding-parmeters:
   #  手机号
   dingding_mobiles: 15656112757
   #  钉钉URL
-  dingding_api_url: https://oapi.dingtalk.com/robot/send?access_token=8bc63dde817067241c978977cbff64168db667ad14eb4ccb4eb744d612da280c
+  dingding_api_url: https://oapi.dingtalk.com/robot/send?access_token=05b56ffdacc335e34508c4b75e95b1ecc91fa01dfa1c2340ee3ec7997ed7ba56
 use:
 #  是否开启缓存
   cache: false
